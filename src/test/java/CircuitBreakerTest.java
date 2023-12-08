@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
-public class CircuitBreakerTest {
+//corriger le code via sonarqube cloud
+class CircuitBreakerTest {
 
     ProductServices productServices;
 
@@ -20,7 +21,7 @@ public class CircuitBreakerTest {
     }
 
     @Test
-    public void circuitBreaker_test(){
+    void circuitBreaker_test(){
         final int[] i = {0};
         IntStream.range(1,31).forEach($->{
             productServices.servicetimeout(Product.builder().name("pen"+ i[0]).price(9).quantity(1).total(9).build());

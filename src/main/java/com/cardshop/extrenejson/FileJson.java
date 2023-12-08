@@ -1,6 +1,6 @@
 package com.cardshop.extrenejson;
 
-import com.cardshop.model.Product;
+
 import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 public class Main {
 
@@ -17,10 +18,14 @@ public class Main {
         myshopControle.print();
 
         try {
-             new ObjectMapper().writeValue(new File("C:\\temp\\FileJson.json"),myshopControle.Persistance());
+             new ObjectMapper().writeValue(new File(getUrlJson()),myshopControle.persistance());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
 
+    }
+
+    private static String getUrlJson() {
+        return URI.create("C:\\temp\\FileJson.json").getPath();
     }
 }

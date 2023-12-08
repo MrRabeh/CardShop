@@ -7,9 +7,13 @@ import com.cardshop.services.ProductServices;
 import com.cardshop.services.impl.ProductServiceImpl;
 
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class MyshopControle {
+
+    Logger log = Logger.getLogger(getClass().getName());
 
    private ProductServices productServices;
 
@@ -22,10 +26,10 @@ public class MyshopControle {
    }
 
    public void print(){
-       System.out.println(productServices.printShop());
+       log.log(Level.INFO,"{}",productServices.printShop());
    }
 
-   public FileJson Persistance(){
+   public FileJson persistance(){
        HashSet<ProductJson> productJsons = productServices.getAll().stream().map(ProductServices::produitJson).collect(Collectors.toCollection(HashSet::new));
        return FileJson.builder().total(productServices.totalProduct()).products(productJsons).build();
    }
